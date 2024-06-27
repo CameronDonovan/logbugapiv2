@@ -11,7 +11,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-json_file_path = os.path.join(os.path.dirname(__file__), 'logbug-c66f4-firebase-adminsdk-k36kb-61ac7dad2c.json')
+json_file_path = os.path.join(os.getcwd(), 'logbug-c66f4-firebase-adminsdk-k36kb-61ac7dad2c.json')
 
 cred = credentials.Certificate(json_file_path) # firebase credentials
 
