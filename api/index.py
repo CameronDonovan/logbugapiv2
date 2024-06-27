@@ -11,7 +11,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-json_file_path = os.path.join('/var/task/', 'logbug-c66f4-firebase-adminsdk-k36kb-61ac7dad2c.json')
+json_file_path = os.path.join('api/var/task/', 'logbug-c66f4-firebase-adminsdk-k36kb-61ac7dad2c.json')
 cred = credentials.Certificate(json_file_path)
 
 conn = firebase_admin.initialize_app(cred) # firestore app
