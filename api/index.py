@@ -3,7 +3,7 @@ from firebase_admin import firestore
 from firebase_admin import credentials
 import os
 
-from pythonping import ping
+from ping3 import ping
 
 from flask import Flask, request, jsonify
 
@@ -190,12 +190,14 @@ def delete_bug():
 
 @app.route('/ping', methods=['GET'])
 def get_networkping():
-    response = ping('thelogbug.com', count=4)
-
-    pingNumber = response.rtt_avg_ms
-
-    stringResponse = "Server Ping: " + str(pingNumber) + "ms"
-
+    # Ping the server and get the average latency in milliseconds
+    latency = ping('thelogbug.com', unit='ms')
+    
+    if latency is None:
+        stringResponse = "Failed to ping the server."
+    else:
+        stringResponse = f"Server Ping: {latency:.2f} ms"
+    
     return jsonify(stringResponse)
     
 
