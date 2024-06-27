@@ -1,6 +1,7 @@
 import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import credentials
+import os
 
 from pythonping import ping
 
@@ -10,7 +11,10 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-cred = credentials.Certificate('./logbug-c66f4-firebase-adminsdk-k36kb-61ac7dad2c.json') # firebase admin credentials
+json_file_path = os.path.join(os.path.dirname(__file__), 'logbug-c66f4-firebase-adminsdk-k36kb-61ac7dad2c.json')
+
+cred = credentials.Certificate(json_file_path) # firebase credentials
+
 conn = firebase_admin.initialize_app(cred) # firestore app
 db = firestore.client() # database connection
 
